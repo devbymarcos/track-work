@@ -26,7 +26,6 @@ print("vamos começar a buscar suas vagas")
 search = input("digite sua busca: ")
 
 
-
 # inicia o navegador
 browser = webdriver.Chrome()
 browser.get("https://www.linkedin.com/")
@@ -40,6 +39,7 @@ sleep(2)
 password.send_keys(credentials['senha'])
 sleep(2)
 btn_entrar.click()
+input("resolva o enigma e volte aqui para pressionar ENTER")
 sleep(5)
 browser.get("https://www.linkedin.com/jobs/")
 sleep(5)
@@ -84,6 +84,10 @@ for link in links:
 
     next_line += 1
 
-spreadsheet.save("vagas_links.xlsx")
+spreadsheet.save("vagas_links-{search}.xlsx")
 print("planilha criada")
+
+print("Encerrando busca")
+sleep(3)
+browser.quit()
 
