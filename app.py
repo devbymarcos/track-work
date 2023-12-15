@@ -4,13 +4,30 @@ from time import sleep
 from selenium.webdriver.common.keys import Keys
 from openpyxl import Workbook
 
+
+#abrir Credenciais para acessar o linkedin
+
+def read_credentials(file_path):
+    with open(file_path,"r") as file:
+        lines = file.readlines()
+
+        credentials ={}
+        for line in lines:
+            key, value = line.strip().split(":")
+            credentials[key] = value
+        return credentials
+
+file_path_credentials = "credentials.txt"
+
+credentials = read_credentials(file_path_credentials)
+
+
 print("vamos começar a buscar suas vagas")
 search = input("digite sua busca: ")
-login_email = input("digite seu login: ")
-login_password = input("insira sua senha: ")
+
+
+
 # inicia o navegador
-
-
 browser = webdriver.Chrome()
 browser.get("https://www.linkedin.com/")
 sleep(2)
@@ -18,9 +35,9 @@ email = browser.find_element(By.XPATH, "//input[@id='session_key']")
 password = browser.find_element(By.XPATH, "//input[@id='session_password']")
 btn_entrar = browser.find_element(By.XPATH, "//button[normalize-space(text())='Entrar']")
 sleep(2)
-email.send_keys(login_email)
+email.send_keys(credentials['user'])
 sleep(2)
-password.send_keys(login_password)
+password.send_keys(credentials['senha'])
 sleep(2)
 btn_entrar.click()
 sleep(5)
