@@ -1,3 +1,5 @@
+#ingnore arquivos
+
 .venv
 .idea
 credentials.json
