@@ -84,7 +84,7 @@ for link in links:
 
     next_line += 1
 
-spreadsheet.save("vagas_links-{search}.xlsx")
+spreadsheet.save("vagas_links-"+search+".xlsx")
 print("planilha criada")
 
 print("Encerrando busca")
